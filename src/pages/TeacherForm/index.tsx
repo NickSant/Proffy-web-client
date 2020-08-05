@@ -1,4 +1,5 @@
 import React, { useState, FormEvent } from "react";
+import { useHistory } from 'react-router-dom';
 
 import PageHeader from "../../components/PageHeader";
 import Input from "../../components/Input";
@@ -18,6 +19,8 @@ function TeacherForm() {
 
   const [subject, setSubject] = useState("");
   const [cost, setCost] = useState("");
+
+  const history = useHistory();
 
   const [scheduleItems, setScheduleItems] = useState([
     {
@@ -66,20 +69,12 @@ function TeacherForm() {
       cost: Number( cost ),
       schedule: scheduleItems,
     }).then(() => {
+      history.push('/');
       alert('Cadastro Realizado com sucesso!!')
     }).catch((err) => {
       console.log(err);
       alert('erro no cadastro');
     })
-    console.log({
-      name,
-      avatar,
-      whatsapp,
-      bio,
-      subject,
-      cost,
-      scheduleItems,
-    });
   }
 
   return (
