@@ -7,10 +7,15 @@ import logoImg from "../../assets/images/logo.svg";
 import "./styles.css";
 
 interface PageHeaderProps {
-    title: string;
+  title: string;
+  description?: string;
 }
 
-const PageHeader: React.FunctionComponent<PageHeaderProps> = ({ title, children }) => {
+const PageHeader: React.FunctionComponent<PageHeaderProps> = ({
+  title,
+  children,
+  description,
+}) => {
   return (
     <header className="page-header">
       <div className="top-bar-container">
@@ -21,10 +26,11 @@ const PageHeader: React.FunctionComponent<PageHeaderProps> = ({ title, children 
       </div>
       <div className="header-content">
         <strong> {title} </strong>
+        {description && <p> {description}</p>}
         {children}
       </div>
     </header>
   );
-}
+};
 
 export default PageHeader;
